@@ -96,8 +96,20 @@ public class ContactsView {
         new Main();
     }
     public void editContacts(){
+//        System.out.println("Nhap so dien thoai");
+//        String phoneNumber = scanner.nextLine();
         System.out.println("Nhap so dien thoai");
         String phoneNumber = scanner.nextLine();
+        boolean check = false;
+        for (int i = 0; i < contactsList.size(); i++) {
+            if (phoneNumber.equals(contactsList.get(i).getPhoneNumber())) {
+                check = true;
+            }
+        }
+        if (check == false) {
+            System.err.println("SDT không tồn tại");
+            new Main();
+        }
         System.out.println("Nhap nhom");
         String group = scanner.nextLine();
         System.out.println("Nhap ten");
@@ -134,9 +146,19 @@ public class ContactsView {
         new Main();
     }
     public void findByPhoneNumber(){
-        System.out.println("Nha so dien thoai");
-        String phone = scanner.nextLine();
-        contactsController.findbyPhoneNumber(phone);
+        System.out.println("Nhap so dien thoai");
+        String phoneNumber = scanner.nextLine();
+        boolean check = false;
+        for (int i = 0; i < contactsList.size(); i++) {
+            if (phoneNumber.equals(contactsList.get(i).getPhoneNumber())) {
+                check = true;
+            }
+        }
+        if (check == false) {
+            System.err.println("SDT không tồn tại");
+            new Main();
+        }
+        contactsController.findbyPhoneNumber(phoneNumber);
         new Main();
     }
 
